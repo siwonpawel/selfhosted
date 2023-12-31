@@ -1,0 +1,47 @@
+version: 3.8
+
+services:
+  reverse-proxy:
+    image: docker.io/library/caddy:alpine
+    container_name: caddy
+    restart: always
+    ports:
+      - "8080:80"
+      - "8443:443"
+    volumes:
+      - $PWD/Caddyfile:/etc/caddy/Caddyfile:Z
+      - $PWD/volumes/caddy/data:/data:Z
+      - $PWD/volumes/caddy/config:/config:Z
+      - $PWD/volumes/caddy/site:/srv:Z
+    labels:
+      - io.containers.autoupdate=registry
+    environment:
+      - TZ=Europe/Warsaw
+    depends_on:
+      - devcast-blog
+    deploy:
+      resources:
+        limits:
+          cpus: 1
+          memory: 64M
+        reservations:
+          cpus: 0.5
+          memory: 32M
+
+  inadyn:
+    image: docker.io/troglobit/inadyn
+    container_name: inadyn
+    volumes:
+      - $PWD/inadyn_conf:/etc/inadyn.conf:Z
+    labels:
+      - io.containers.autoupdate=registry
+    environment:
+      - TZ=Europe/Warsaw
+    deploy:
+      resources:
+        limits:
+          cpus: 0.5
+          memory: 16M
+        reservations:
+          cpus: 0.25
+          memory: 8M

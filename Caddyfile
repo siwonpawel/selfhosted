@@ -1,0 +1,7 @@
+devcast.pl {
+    redir blog.devcast.pl
+}
+
+blog.devcast.pl {
+    respond "Hello, World! @ blog.devcast.pl"
+}
