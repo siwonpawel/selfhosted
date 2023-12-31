@@ -32,7 +32,7 @@ services:
     image: docker.io/troglobit/inadyn
     container_name: inadyn
     volumes:
-      - $PWD/inadyn_conf:/etc/inadyn.conf:Z
+      - $PWD/inadyn.conf:/etc/inadyn.conf:Z
     labels:
       - io.containers.autoupdate=registry
     environment:
