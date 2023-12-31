@@ -1,5 +1,5 @@
 devcast.pl {
-    redir blog.devcast.pl
+    redir https://blog.devcast.pl
 }
 
 blog.devcast.pl {
