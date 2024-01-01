@@ -5,3 +5,7 @@ devcast.pl {
 blog.devcast.pl {
     respond "Hello, World! @ blog.devcast.pl"
 }
+
+biedawka.pl {
+    redir https://www.facebook.com/groups/627972774584146
+}

@@ -45,3 +45,21 @@ services:
         reservations:
           cpus: 0.25
           memory: 8M
+
+  ######################################################
+
+  devcast-blog:
+    image: docker.io/library/nginx:latest
+    container_name: devcast-blog
+    labels:
+      - io.containers.autoupdate=registry
+    environment:
+      - TZ=Europe/Warsaw
+    deploy:
+      resources:
+        limits:
+          cpus: 1
+          memory: 512M
+        reservations:
+          cpus: 0.5
+          memory: 256M
